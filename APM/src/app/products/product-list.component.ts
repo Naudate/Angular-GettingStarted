@@ -22,7 +22,6 @@ export class ProductListComponent implements OnInit {
       this.filteredProducts = this.performFilter(value);
   }
 
-  filteredProducts: IProduct[] = [];
   products: IProduct[] = [
     {
       "productId": 1,
@@ -75,6 +74,7 @@ export class ProductListComponent implements OnInit {
       "imageUrl": "assets/images/xbox-controller.png"
     }
   ];
+  filteredProducts: IProduct[] = this.products;
 
   performFilter(value: string): IProduct[] {
     value = value.toLowerCase();
@@ -88,5 +88,9 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     console.log('ng OnInit.');
+  }
+
+  onRatingClicked(message: string): void {
+    this.pageTitle = 'Product List: ' + message;
   }
 }
